@@ -1,0 +1,23 @@
+/*
+    bakery
+    ---------------------------
+
+    Jason Application File
+
+    This file defines the initial state of the MAS
+
+    Jason 3.2.0
+    abril 10, 2024 - 18:31:49
+*/
+
+MAS bakery {
+
+    environment: example.Env(10)
+
+    agents: baker;
+            kate;
+            teddy;
+            bob;
+
+    aslSourcePath: "src/agt";
+}
