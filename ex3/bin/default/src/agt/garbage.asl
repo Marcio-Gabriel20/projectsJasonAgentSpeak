@@ -6,4 +6,6 @@ garbage(1,1).
 	.wait(10000);
 	.send(boat, tell, garbage(1,2));
 	.wait(10000);
-	.send(boat, tell, garbage(4,4)).
+	.send(boat, tell, garbage(4,4));
+	.wait(10000);
+	.send(boat, tell, garbage(2,6)).
