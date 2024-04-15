@@ -6,13 +6,13 @@
 
 /* Initial goals */
 
-// !order.
+!order.
 
 /* Plans */
 
-// +!order <-
-//     .print("Enviando pedidos...");
-//     .wait(1000);
-//     .send(purchase, tell, purchaseRequest("Smartphone", 1));
-//     .wait(5000);
-//     .send(purchase, tell, purchaseRequest("Smartphone", 5)).
++!order <-
+    .print("Enviando pedidos...");
+    .wait(1000);
+    .send(purchase, tell, purchaseRequest("Smartphone", 1, "request"));
+    .wait(5000);
+    .send(purchase, tell, purchaseRequest("Book", 5, "request")).

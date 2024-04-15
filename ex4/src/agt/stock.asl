@@ -9,12 +9,47 @@ shirt(100).
 
 /* Initial goals */
 
-!checkStock("Smartphone", 1).
-
 /* Plans */
 
-// +!checkStock(Item, Amount) : Item == "Smartphone" & smartphone(Stock) & (Amout > Stock) <-
-    // .print("Estoque disponível. - Produto: ", Item, " --- Quantidade: ", Amount, " --- Estoque: ", Stock).
++!checkItem(Item, Amount) : Item == "Smartphone" <-
+    !checkStock(Amount).
 
-+!checkStock(Item, Amount) : Item == "Smartphone" & smartphone(Stock) & (Amout > Stock) <-
-    .print("Estoque disponível. - Produto: ", Item, " --- Quantidade: ", Amount, " --- Estoque: ", Stock).
++!checkItem(Item, Amount) : Item == "Book" <-
+    !checkStock(Amount).
+
++!checkItem(Item, Amount) : Item == "Shelf" <-
+    !checkStock(Amount).
+
++!checkItem(Item, Amount) : Item == "Shirt" <-
+    !checkStock(Amount).
+
++!checkItem(Item, Amount) : Item \== "Smartphone" | Item \== "Book" | Item \== "Shelf" | Item \== "Shirt" <-
+    .print("Esse item não existem em nosso estoque.").
+
++!checkStock(Amount) : smartphone(Stock) & (Amount <= Stock) <-
+    -+smartphone(Stock-Amount);
+    .send(purchase, tell, status("finish")).
+
++!checkStock(Amount) : smartphone(Stock) & (Amount > Stock) <-
+    .send(purchase, tell, status("refused")).
+
++!checkStock(Amount) : book(Stock) & (Amount <= Stock) <-
+    -+book(Stock-Amount);
+    .send(purchase, tell, status("finish")).
+
++!checkStock(Amount) : book(Stock) & (Amount > Stock) <-
+    .send(purchase, tell, status("refused")).
+
++!checkStock(Amount) : shelf(Stock) & (Amount <= Stock) <-
+    -+shelf(Stock-Amount);
+    .send(purchase, tell, status("finish")).
+
++!checkStock(Amount) : shelf(Stock) & (Amount > Stock) <-
+    .send(purchase, tell, status("refused")).
+
++!checkStock(Amount) : shirt(Stock) & (Amount <= Stock) <-
+    -+shirt(Stock-Amount);
+    .send(purchase, tell, status("finish")).
+
++!checkStock(Amount) : shirt(Stock) & (Amount > Stock) <-
+    .send(purchase, tell, status("refused")).
